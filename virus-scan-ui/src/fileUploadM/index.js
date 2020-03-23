@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Typography } from '@material-ui/core';
 import 'typeface-roboto';
 import FileUpload from './views/fileupload.js';
+import SideBar from './views/sidebar.js'
 
 class FileUploadComponent extends Component {
 
@@ -23,6 +24,7 @@ class FileUploadComponent extends Component {
                 </Typography>
 
                 <hr />
+                <SideBar />
                 <FileUpload />
             </div>
         )
