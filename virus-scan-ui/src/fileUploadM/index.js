@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Typography } from '@material-ui/core';
 import 'typeface-roboto';
-import FileUpload from './views/fileupload.js';
-import SideBar from './views/sidebar.js'
+// import FileUpload from './views/fileupload.js';
+// import SideBar from './views/sidebar.js'
+import SearchBox from './views/searchbox.js'
 
 class FileUploadComponent extends Component {
 
@@ -19,13 +20,18 @@ class FileUploadComponent extends Component {
                 "backgroundImage": imagetest,
                 "backgroundSize": "100% 100%"
             }}>
-                <Typography variant="h2" component="h3">
+                {/* <Typography variant="h2" component="h3">
                     File Virus Scanner UI
                 </Typography>
 
                 <hr />
                 <SideBar />
-                <FileUpload />
+                <FileUpload /> */}
+                <Typography variant="h2" component="h3">
+                    Inventory Instance Search
+                    <hr />
+                    <SearchBox />
+                </Typography>
             </div>
         )
     }
