@@ -14,9 +14,11 @@ class SearchBox extends Component{
             tenantId: '',
             imsOrgId: '',
             buildNumber: '',
-            hosted: '',
+            deployType: '',
+            hostedType: '',
             instanceTypes: [],
-            environment: ''
+            environment: '',
+            error: {}
         }
     };
 
@@ -32,7 +34,8 @@ class SearchBox extends Component{
                     instanceDetails.tenantId = response.data.tenantId;
                     instanceDetails.imsOrgId = response.data.imsOrgId;
                     instanceDetails.buildNumber = response.data.buildNumber;
-                    instanceDetails.hosted = response.data.instanceTyepEnum;
+                    instanceDetails.hostedType = response.data.hostedType;
+                    instanceDetails.deployType = response.data.deployType;
                     instanceDetails.instanceTypes = response.data.instanceTypes;
                     instanceDetails.environment = response.data.environment;
                     this.setState({'instanceDetails': instanceDetails});
@@ -41,6 +44,13 @@ class SearchBox extends Component{
         (error) => { 
             console.log(error)
             let instanceDetails = {};
+            if(typeof error.response != 'undefined' && typeof error.response.data != 'undefined') {
+                instanceDetails.error = {};
+                instanceDetails.error.code = error.response.data.error;
+                instanceDetails.error.message = error.response.data.message;
+            } else {
+                instanceDetails.error.message = 'Error occurred please contact developer';
+            }
             this.setState({'instanceDetails': instanceDetails});
         })
      }

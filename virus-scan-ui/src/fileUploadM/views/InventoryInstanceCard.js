@@ -30,7 +30,7 @@ export default function InventoryInstanceCard(props) {
   let {instanceDetails} = props
   console.log(instanceDetails)
 
-  if(instanceDetails.instanceId != undefined && instanceDetails.instanceId.toString().length > 0) {
+  if(instanceDetails.instanceId !== undefined && instanceDetails.instanceId.toString().length > 0) {
     return (
         <div>
             <hr />
@@ -58,13 +58,32 @@ export default function InventoryInstanceCard(props) {
                 Build Number : {instanceDetails.buildNumber}
                 </Typography>
               <Typography variant="h6" component="h6">
-                Hosted : {instanceDetails.hosted}
+                Cloud : {instanceDetails.deployType}
+              </Typography>
+              <Typography variant="h6" component="h6">
+                Hosted : {instanceDetails.hostedType}
               </Typography>
             </CardContent>
             </Card>
         </div>
       );
+  } else if(instanceDetails.error.code !== undefined) {
+    return (
+      <div>
+          <hr />
+          <Card className={classes.card}>
+          <CardContent>
+            <Typography variant="h6" component="h6">
+              Error Code : {instanceDetails.error.code}
+            </Typography>
+            <Typography variant="h6" component="h6">
+              Error Message : {instanceDetails.error.message}
+              </Typography>
+          </CardContent>
+          </Card>
+      </div>
+    );
   } else {
-      return null;
+    return null;
   }
 }
